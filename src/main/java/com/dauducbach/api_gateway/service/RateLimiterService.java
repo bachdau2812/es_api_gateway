@@ -24,7 +24,6 @@ public class RateLimiterService {
     ReactiveRedisTemplate<String, String> redisTemplate;
 
     public Mono<Boolean> isAllowedSlidingWindow (ServerWebExchange exchange, String endPoint) {
-        System.out.println(endPoint);
         return exchange.getPrincipal()
                 .switchIfEmpty(Mono.defer(() -> {
                     log.error("1a. No principal found!");
